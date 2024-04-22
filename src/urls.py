@@ -1,8 +1,7 @@
-from django.urls import path
-from src.srcviews import auth_views
-
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views.ParentView import ParentListView, ParentDetailView
 urlpatterns = [
-    path('register/', auth_views.UserCreate.as_view(), name='account-register'),
-    path('login/', auth_views.LoginView.as_view(), name='account-login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='account-logout'),
+    path('parents/', ParentListView.as_view(), name='parent-list'),
+    path('parents/<str:pk>/', ParentDetailView.as_view(), name='parent-detail'),
 ]
